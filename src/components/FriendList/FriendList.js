@@ -1,20 +1,18 @@
-import React from "react";
-import styles from "./FriendList.module.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import styles from './FriendList.module.css';
+import PropTypes from 'prop-types';
+import FriendListItem from '../FriendListItem/FriendListItem';
 
 const FriendList = ({ friends }) => {
   return (
     <ul className={styles.friendList}>
       {friends.map(({ avatar, name, id, isOnline }) => {
-        let statusStyle = [styles.status];
-        isOnline && statusStyle.push(styles.statusIsOnline);
-        return (
-          <li key={id} className={styles.listItem}>
-            <span className={statusStyle.join(" ")}></span>
-            <img className={styles.avatar} src={avatar} alt="" width="48" />
-            <p className={styles.name}>{name}</p>
-          </li>
-        );
+        return <FriendListItem
+          avatar={avatar}
+          isOnline={isOnline}
+          name={name}
+          id={id}
+        />;
       })}
     </ul>
   );
@@ -26,9 +24,9 @@ FriendList.propTypes = {
       avatar: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       isOnline: PropTypes.bool.isRequired,
-      id: PropTypes.number.isRequired
-    })
-  )
+      id: PropTypes.number.isRequired,
+    }),
+  ),
 };
 
 export default FriendList;

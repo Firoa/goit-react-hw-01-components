@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./Statistics.module.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import styles from './Statistics.module.css';
+import PropTypes from 'prop-types';
 
 const Statictics = ({ statictics, title }) => (
   <section className={styles.statistics}>
@@ -16,17 +16,15 @@ const Statictics = ({ statictics, title }) => (
   </section>
 );
 
-Statictics.defaultProps = { title: "Upload stats" };
-
 Statictics.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   statictics: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-      percentage: PropTypes.number.isRequired
-    })
-  )
+      percentage: PropTypes.number.isRequired,
+    }),
+  ),
 };
 
 export default Statictics;
